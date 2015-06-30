@@ -1,0 +1,79 @@
+extends index
+block content
+
+    script(type='text/javascript').
+        var elem = document.getElementById("nav-test").parentNode;
+        elem.className = elem.className + " active";
+        document.onload = function(e){
+            document.getElementById("search_launch").onclick=function(){
+                console.log("cliqued");
+                client.listIndexes(function(err, schemas){
+                    // optional error, or the list of schemas from the service 
+                });
+            };
+        }
+      
+    h2 Executeur de requetes (Beta pour phase de développement)
+    .well-sm Notes: les requetes doivent respecter les principes REST et la nomenclature MSDN. <br/>Precedez-la du protocole voulu et suffixez-la du numero de version de l'API que vous souhaitez (si vous ne savez pas mettez celle des exemples ci-dessous). <br/>
+    .well-sm#well-sm-kbd
+        kbd.comment // Create Index (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol POST 
+            /indexes
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Update Index (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol PUT
+            /indexes/[index name]
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Get Index (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol GET 
+            /indexes/[index name]
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // List Indexes (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol GET 
+            /indexes
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Get Index Statistics (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol GET 
+            /indexes/[index name]/stats
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Delete Index (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol DELETE 
+            /indexes/[index name]
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Add, Update or Delete Documents (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol POST 
+            /indexes/[index name]/docs/index
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Search Documents (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol GET 
+            /indexes/[index name]/docs?[query parameters]
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Lookup Document (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol GET 
+            /indexes/[index name]/docs/[key]?[query parameters]
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Count Documents (Azure Search Service REST API) <br/> 
+        kbd 
+            span.protocol GET 
+            /indexes/[index name]/docs/$count
+            span.apiversion ?api-version=2015-02-28 <br/>
+        kbd.comment // Suggestions (Azure Search Service REST API) <br/>
+        kbd 
+            span.protocol GET 
+            /indexes/[index name]/docs/suggest?[query parameters]
+            span.apiversion ?api-version=2015-02-28 <br/>
+    form
+        input(type="text" id="query" class="form-control" aria-describedby="query" value="GET /indexes?api-version=2015-02-28")
+        button(type="button" href="#" class="btn btn-primary" id="search_launch") Lancer la recherche
+        button(type="button" href="#" class="btn btn-default" id="search_clear") Effacer
+    
+    #result

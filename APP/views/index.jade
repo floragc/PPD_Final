@@ -1,0 +1,54 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    meta(http-equiv='X-UA-Compatible', content='IE=edge')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    title= title
+    
+    link(href='stylesheets/bootstrap.min.css', rel='stylesheet')
+    link(href='stylesheets/styles.css', rel='stylesheet')
+    
+  body
+    // menu top
+    .navbar.navbar-default.navbar-static-top(role='navigation')
+      .container
+        .navbar-header
+          button.navbar-toggle(type='button', data-toggle='collapse', data-target='.navbar-collapse')
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/home') PPD
+        .navbar-collapse.collapse
+          ul.nav.navbar-nav
+            li
+              a(href='/home' id='nav-home') Home
+            li
+              a(href='/search' id='nav-search') Search
+            li
+              a(href='/about' id='nav-about') About
+            li
+              a(href='/genes' id='nav-about') Genes
+            li
+              a(href='/maladies' id='nav-about') Diseases
+            li
+              a(href='/test' id='nav-test') TESTS
+        // end of .nav-collapse
+    .container
+        block content
+    
+    .container
+        block footer
+        include ./footer.jade
+    
+    
+// scripts a charger a la fin
+script(src='http://code.jquery.com/jquery-2.1.4.min.js')
+script(src='javascripts/js/bootstrap.min.js')
+script(src='javascripts/scripts.js')
+script(src='javascripts/azure_search_calls.js')
+script(src='javascripts/azure-search.min.js')
+script(src='javascripts/js/DataIndexer/DataIndexer.js')
